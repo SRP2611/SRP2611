@@ -15,7 +15,7 @@ jobs:
 
       - name: Generate stats SVGs
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           USERNAME="SRP2611"
           DIR="profile-summary-card-output/tokyonight"
