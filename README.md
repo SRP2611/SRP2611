@@ -44,12 +44,16 @@
 ### 📊 Contributions
 
 <p align="center">
-  <img src="./profile-summary-card-output/tokyonight/3-stats.svg" width="330" />
-  <img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg" width="330" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=SRP2611&theme=tokyonight" width="100%" />
 </p>
-<p align="center">
-  <img src="./profile-summary-card-output/tokyonight/4-productive-time.svg" width="660" />
-</p>
+
+<table width="100%">
+  <tr>
+    <td width="33%"><img src="./profile-summary-card-output/tokyonight/3-stats.svg" width="100%" /></td>
+    <td width="33%"><img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg" width="100%" /></td>
+    <td width="33%"><img src="./profile-summary-card-output/tokyonight/4-productive-time.svg" width="100%" /></td>
+  </tr>
+</table>
 
 ---
 
