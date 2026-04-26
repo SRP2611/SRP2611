@@ -5,19 +5,19 @@
   <g transform="translate(30, 55)">
     <text x="0" y="22" style="font-size: 13px; fill: #a9b1d6;">2023</text>
     <rect x="55" y="10" width="220" height="18" rx="3" fill="#2a2e3a"/>
-    <rect x="55" y="10" width="" height="18" rx="3" fill="#38bdae"/>
-    <text x="60" y="24" style="font-size: 11px; fill: #a9b1d6;">~0/mo</text>
+    <rect x="55" y="10" width="43" height="18" rx="3" fill="#38bdae"/>
+    <text x="103" y="24" style="font-size: 11px; fill: #a9b1d6;">~40/mo</text>
     <text x="0" y="52" style="font-size: 13px; fill: #a9b1d6;">2024</text>
     <rect x="55" y="40" width="220" height="18" rx="3" fill="#2a2e3a"/>
-    <rect x="55" y="40" width="" height="18" rx="3" fill="#70a5fd"/>
-    <text x="60" y="54" style="font-size: 11px; fill: #a9b1d6;">~0/mo</text>
+    <rect x="55" y="40" width="128" height="18" rx="3" fill="#70a5fd"/>
+    <text x="188" y="54" style="font-size: 11px; fill: #a9b1d6;">~117/mo</text>
     <text x="0" y="82" style="font-size: 13px; fill: #a9b1d6;">2025</text>
     <rect x="55" y="70" width="220" height="18" rx="3" fill="#2a2e3a"/>
-    <rect x="55" y="70" width="" height="18" rx="3" fill="#bb9af7"/>
-    <text x="60" y="84" style="font-size: 11px; fill: #a9b1d6;">~0/mo</text>
+    <rect x="55" y="70" width="87" height="18" rx="3" fill="#bb9af7"/>
+    <text x="147" y="84" style="font-size: 11px; fill: #a9b1d6;">~80/mo</text>
     <text x="0" y="112" style="font-size: 13px; fill: #a9b1d6;">2026</text>
     <rect x="55" y="100" width="220" height="18" rx="3" fill="#2a2e3a"/>
-    <rect x="55" y="100" width="" height="18" rx="3" fill="#f7768e"/>
-    <text x="60" y="114" style="font-size: 11px; fill: #a9b1d6;">~0/mo</text>
+    <rect x="55" y="100" width="220" height="18" rx="3" fill="#f7768e"/>
+    <text x="280" y="114" style="font-size: 11px; fill: #a9b1d6;">~201/mo</text>
   </g>
 </svg>
