@@ -44,10 +44,11 @@
 ### 📊 Contributions
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Total_Contributions-5,000+-6C63FF?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Commits-2,800+-00C853?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Pull_Requests-500+-FF6B6B?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Code_Reviews-1,600+-FFA726?style=for-the-badge" />
+  <img src="./profile-summary-card-output/tokyonight/3-stats.svg" width="340" />
+  <img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg" width="340" />
+</p>
+<p align="center">
+  <img src="./profile-summary-card-output/tokyonight/4-productive-time.svg" width="340" />
 </p>
 
 ---
