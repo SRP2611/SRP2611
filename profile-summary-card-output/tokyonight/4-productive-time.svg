@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
   <style>* { font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif }</style>
-  <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.5%" stroke="#1a1b27" stroke-width="1" fill="#1a1b27"/>
+  <rect x="0.5" y="0.5" rx="6" ry="6" height="199" width="399" stroke="#30363d" stroke-width="1" fill="#0d1117"/>
   <text x="30" y="40" style="font-size: 20px; fill: #70a5fd;">Monthly Commits</text>
   <g transform="translate(30, 55)">
     <text x="0" y="22" style="font-size: 13px; fill: #a9b1d6;">2023</text>
@@ -21,6 +21,6 @@
     <text x="0" y="112" style="font-size: 13px; fill: #a9b1d6;">2026</text>
     <rect x="55" y="100" width="180" height="18" rx="3" fill="#2a2e3a"/>
     <rect x="55" y="100" width="180" height="18" rx="3" fill="#f7768e"/>
-    <text x="242" y="114" style="font-size: 12px; fill: #a9b1d6;">~201/mo</text>
+    <text x="242" y="114" style="font-size: 12px; fill: #a9b1d6;">~202/mo</text>
   </g>
 </svg>

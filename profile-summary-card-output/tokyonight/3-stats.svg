@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200">
   <style>* { font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif }</style>
-  <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.4%" stroke="#1a1b27" stroke-width="1" fill="#1a1b27"/>
+  <rect x="0.5" y="0.5" rx="6" ry="6" height="199" width="339" stroke="#30363d" stroke-width="1" fill="#0d1117"/>
   <text x="30" y="40" style="font-size: 20px; fill: #70a5fd;">Stats</text>
   <g transform="translate(30, 60)">
     <text x="0" y="15" style="font-size: 13px; fill: #38bdae;">Total Commits:</text>
-    <text x="200" y="15" style="font-size: 14px; fill: #a9b1d6; font-weight: bold;">3663</text>
+    <text x="200" y="15" style="font-size: 14px; fill: #a9b1d6; font-weight: bold;">3667</text>
     <text x="0" y="42" style="font-size: 13px; fill: #38bdae;">Pull Requests:</text>
     <text x="200" y="42" style="font-size: 14px; fill: #a9b1d6; font-weight: bold;">654</text>
     <text x="0" y="69" style="font-size: 13px; fill: #38bdae;">Code Reviews:</text>
