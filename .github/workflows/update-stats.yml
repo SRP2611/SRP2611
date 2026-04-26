@@ -1,0 +1,149 @@
+name: Update Stats Cards
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate stats SVGs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          USERNAME="SRP2611"
+          DIR="profile-summary-card-output/tokyonight"
+          mkdir -p "$DIR"
+
+          # Fetch yearly data
+          fetch_year() {
+            gh api graphql -f query="
+            query {
+              user(login: \"$USERNAME\") {
+                contributionsCollection(from: \"${1}-01-01T00:00:00Z\", to: \"${1}-12-31T23:59:59Z\") {
+                  totalCommitContributions
+                  totalPullRequestContributions
+                  totalPullRequestReviewContributions
+                  contributionCalendar { totalContributions }
+                }
+              }
+            }" --jq '.data.user.contributionsCollection'
+          }
+
+          # Fetch current year
+          CURRENT=$(gh api graphql -f query='
+          query {
+            user(login: "'"$USERNAME"'") {
+              contributionsCollection {
+                totalCommitContributions
+                totalPullRequestContributions
+                totalPullRequestReviewContributions
+                totalRepositoriesWithContributedCommits
+                contributionCalendar { totalContributions }
+              }
+            }
+          }' --jq '.data.user.contributionsCollection')
+
+          Y2023=$(fetch_year 2023)
+          Y2024=$(fetch_year 2024)
+          Y2025=$(fetch_year 2025)
+
+          # Parse numbers
+          C2023=$(echo "$Y2023" | jq '.totalCommitContributions')
+          C2024=$(echo "$Y2024" | jq '.totalCommitContributions')
+          C2025=$(echo "$Y2025" | jq '.totalCommitContributions')
+          C2026=$(echo "$CURRENT" | jq '.totalCommitContributions')
+
+          PR2023=$(echo "$Y2023" | jq '.totalPullRequestContributions')
+          PR2024=$(echo "$Y2024" | jq '.totalPullRequestContributions')
+          PR2025=$(echo "$Y2025" | jq '.totalPullRequestContributions')
+          PR2026=$(echo "$CURRENT" | jq '.totalPullRequestContributions')
+
+          RV2023=$(echo "$Y2023" | jq '.totalPullRequestReviewContributions')
+          RV2024=$(echo "$Y2024" | jq '.totalPullRequestReviewContributions')
+          RV2025=$(echo "$Y2025" | jq '.totalPullRequestReviewContributions')
+          RV2026=$(echo "$CURRENT" | jq '.totalPullRequestReviewContributions')
+
+          REPOS=$(echo "$CURRENT" | jq '.totalRepositoriesWithContributedCommits')
+
+          TOTAL_COMMITS=$((C2023 + C2024 + C2025 + C2026))
+          TOTAL_PRS=$((PR2023 + PR2024 + PR2025 + PR2026))
+          TOTAL_REVIEWS=$((RV2023 + RV2024 + RV2025 + RV2026))
+
+          # Current month of year for monthly average
+          CURRENT_MONTH=$(date +%-m)
+          M2023=$((C2023 / 12))
+          M2024=$((C2024 / 12))
+          M2025=$((C2025 / 12))
+          M2026=$((C2026 / CURRENT_MONTH))
+
+          # Bar widths (max 220px, relative to max year)
+          MAX=$(echo -e "$M2023\n$M2024\n$M2025\n$M2026" | sort -rn | head -1)
+          W2023=$((M2023 * 220 / MAX))
+          W2024=$((M2024 * 220 / MAX))
+          W2025=$((M2025 * 220 / MAX))
+          W2026=$((M2026 * 220 / MAX))
+
+          # Stats card
+          cat > "$DIR/3-stats.svg" << SVGEOF
+          <svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200">
+            <style>* { font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif }</style>
+            <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.4%" stroke="#1a1b27" stroke-width="1" fill="#1a1b27"/>
+            <text x="30" y="40" style="font-size: 20px; fill: #70a5fd;">Stats</text>
+            <g transform="translate(30, 60)">
+              <text x="0" y="15" style="font-size: 13px; fill: #38bdae;">Total Commits:</text>
+              <text x="200" y="15" style="font-size: 14px; fill: #a9b1d6; font-weight: bold;">${TOTAL_COMMITS}</text>
+              <text x="0" y="42" style="font-size: 13px; fill: #38bdae;">Pull Requests:</text>
+              <text x="200" y="42" style="font-size: 14px; fill: #a9b1d6; font-weight: bold;">${TOTAL_PRS}</text>
+              <text x="0" y="69" style="font-size: 13px; fill: #38bdae;">Code Reviews:</text>
+              <text x="200" y="69" style="font-size: 14px; fill: #a9b1d6; font-weight: bold;">${TOTAL_REVIEWS}</text>
+              <text x="0" y="96" style="font-size: 13px; fill: #38bdae;">Repositories:</text>
+              <text x="200" y="96" style="font-size: 14px; fill: #a9b1d6; font-weight: bold;">${REPOS}</text>
+            </g>
+          </svg>
+          SVGEOF
+
+          # Monthly commits card
+          cat > "$DIR/4-productive-time.svg" << SVGEOF
+          <svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200">
+            <style>* { font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif }</style>
+            <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.4%" stroke="#1a1b27" stroke-width="1" fill="#1a1b27"/>
+            <text x="30" y="40" style="font-size: 20px; fill: #70a5fd;">Monthly Commits</text>
+            <g transform="translate(30, 55)">
+              <text x="0" y="22" style="font-size: 13px; fill: #a9b1d6;">2023</text>
+              <rect x="55" y="10" width="220" height="18" rx="3" fill="#2a2e3a"/>
+              <rect x="55" y="10" width="${W2023}" height="18" rx="3" fill="#38bdae"/>
+              <text x="$((W2023 + 60))" y="24" style="font-size: 11px; fill: #a9b1d6;">~${M2023}/mo</text>
+              <text x="0" y="52" style="font-size: 13px; fill: #a9b1d6;">2024</text>
+              <rect x="55" y="40" width="220" height="18" rx="3" fill="#2a2e3a"/>
+              <rect x="55" y="40" width="${W2024}" height="18" rx="3" fill="#70a5fd"/>
+              <text x="$((W2024 + 60))" y="54" style="font-size: 11px; fill: #a9b1d6;">~${M2024}/mo</text>
+              <text x="0" y="82" style="font-size: 13px; fill: #a9b1d6;">2025</text>
+              <rect x="55" y="70" width="220" height="18" rx="3" fill="#2a2e3a"/>
+              <rect x="55" y="70" width="${W2025}" height="18" rx="3" fill="#bb9af7"/>
+              <text x="$((W2025 + 60))" y="84" style="font-size: 11px; fill: #a9b1d6;">~${M2025}/mo</text>
+              <text x="0" y="112" style="font-size: 13px; fill: #a9b1d6;">2026</text>
+              <rect x="55" y="100" width="220" height="18" rx="3" fill="#2a2e3a"/>
+              <rect x="55" y="100" width="${W2026}" height="18" rx="3" fill="#f7768e"/>
+              <text x="$((W2026 + 60))" y="114" style="font-size: 11px; fill: #a9b1d6;">~${M2026}/mo</text>
+            </g>
+          </svg>
+          SVGEOF
+
+          echo "Stats: commits=$TOTAL_COMMITS prs=$TOTAL_PRS reviews=$TOTAL_REVIEWS repos=$REPOS"
+          echo "Monthly: 2023=~${M2023} 2024=~${M2024} 2025=~${M2025} 2026=~${M2026}"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add profile-summary-card-output/
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Auto-update stats cards [skip ci]"
+          git push
