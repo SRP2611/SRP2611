@@ -44,7 +44,7 @@
 ### 📊 Contributions
 
 <p align="center">
-  <img src="./profile-summary-card-output/tokyonight/0-profile-details.svg" width="100%" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=SRP2611&theme=tokyonight" width="100%" />
 </p>
 
 <p align="center">
