@@ -76,21 +76,6 @@ jobs:
           TOTAL_PRS=$((PR2023 + PR2024 + PR2025 + PR2026))
           TOTAL_REVIEWS=$((RV2023 + RV2024 + RV2025 + RV2026))
 
-          # Current month of year for monthly average
-          CURRENT_MONTH=$(date +%-m)
-          M2023=$((C2023 / 12))
-          M2024=$((C2024 / 12))
-          M2025=$((C2025 / 12))
-          M2026=$((C2026 / CURRENT_MONTH))
-
-          # Bar widths (max 180px, relative to max year — leaves room for label)
-          MAX=$(echo -e "$M2023\n$M2024\n$M2025\n$M2026" | sort -rn | head -1)
-          [ "$MAX" -eq 0 ] && MAX=1
-          W2023=$((M2023 * 180 / MAX))
-          W2024=$((M2024 * 180 / MAX))
-          W2025=$((M2025 * 180 / MAX))
-          W2026=$((M2026 * 180 / MAX))
-
           # Stats card
           cat > "$DIR/3-stats.svg" << SVGEOF
           <svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200">
@@ -110,43 +95,7 @@ jobs:
           </svg>
           SVGEOF
 
-          # Monthly commits card — wider to fit labels after bars
-          L2023=$((W2023 + 62))
-          L2024=$((W2024 + 62))
-          L2025=$((W2025 + 62))
-          L2026=$((W2026 + 62))
-
-          cat > "$DIR/4-productive-time.svg" << SVGEOF
-          <svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
-            <style>* { font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif }</style>
-            <rect x="0.5" y="0.5" rx="6" ry="6" height="199" width="399" stroke="#30363d" stroke-width="1" fill="#0d1117"/>
-            <text x="30" y="40" style="font-size: 20px; fill: #70a5fd;">Monthly Commits</text>
-            <g transform="translate(30, 55)">
-              <text x="0" y="22" style="font-size: 13px; fill: #a9b1d6;">2023</text>
-              <rect x="55" y="10" width="180" height="18" rx="3" fill="#2a2e3a"/>
-              <rect x="55" y="10" width="${W2023}" height="18" rx="3" fill="#38bdae"/>
-              <text x="${L2023}" y="24" style="font-size: 12px; fill: #a9b1d6;">~${M2023}/mo</text>
-
-              <text x="0" y="52" style="font-size: 13px; fill: #a9b1d6;">2024</text>
-              <rect x="55" y="40" width="180" height="18" rx="3" fill="#2a2e3a"/>
-              <rect x="55" y="40" width="${W2024}" height="18" rx="3" fill="#70a5fd"/>
-              <text x="${L2024}" y="54" style="font-size: 12px; fill: #a9b1d6;">~${M2024}/mo</text>
-
-              <text x="0" y="82" style="font-size: 13px; fill: #a9b1d6;">2025</text>
-              <rect x="55" y="70" width="180" height="18" rx="3" fill="#2a2e3a"/>
-              <rect x="55" y="70" width="${W2025}" height="18" rx="3" fill="#bb9af7"/>
-              <text x="${L2025}" y="84" style="font-size: 12px; fill: #a9b1d6;">~${M2025}/mo</text>
-
-              <text x="0" y="112" style="font-size: 13px; fill: #a9b1d6;">2026</text>
-              <rect x="55" y="100" width="180" height="18" rx="3" fill="#2a2e3a"/>
-              <rect x="55" y="100" width="${W2026}" height="18" rx="3" fill="#f7768e"/>
-              <text x="${L2026}" y="114" style="font-size: 12px; fill: #a9b1d6;">~${M2026}/mo</text>
-            </g>
-          </svg>
-          SVGEOF
-
           echo "Stats: commits=$TOTAL_COMMITS prs=$TOTAL_PRS reviews=$TOTAL_REVIEWS repos=$REPOS"
-          echo "Monthly: 2023=~${M2023} 2024=~${M2024} 2025=~${M2025} 2026=~${M2026}"
 
       - name: Commit and push
         run: |
