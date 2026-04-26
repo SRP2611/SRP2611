@@ -49,9 +49,11 @@
 
 <table width="100%">
   <tr>
-    <td width="33%"><img src="./profile-summary-card-output/tokyonight/3-stats.svg" width="100%" /></td>
-    <td width="33%"><img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg" width="100%" /></td>
-    <td width="33%"><img src="./profile-summary-card-output/tokyonight/4-productive-time.svg" width="100%" /></td>
+    <td width="50%"><img src="./profile-summary-card-output/tokyonight/3-stats.svg" width="100%" /></td>
+    <td width="50%"><img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg" width="100%" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="./profile-summary-card-output/tokyonight/4-productive-time.svg" width="50%" /></td>
   </tr>
 </table>
 
