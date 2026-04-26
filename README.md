@@ -44,11 +44,11 @@
 ### 📊 Contributions
 
 <p align="center">
-  <img src="./profile-summary-card-output/tokyonight/3-stats.svg" width="340" />
-  <img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg" width="340" />
+  <img src="./profile-summary-card-output/tokyonight/3-stats.svg" width="330" />
+  <img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg" width="330" />
 </p>
 <p align="center">
-  <img src="./profile-summary-card-output/tokyonight/4-productive-time.svg" width="340" />
+  <img src="./profile-summary-card-output/tokyonight/4-productive-time.svg" width="660" />
 </p>
 
 ---

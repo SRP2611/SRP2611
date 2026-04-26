@@ -83,12 +83,13 @@ jobs:
           M2025=$((C2025 / 12))
           M2026=$((C2026 / CURRENT_MONTH))
 
-          # Bar widths (max 220px, relative to max year)
+          # Bar widths (max 180px, relative to max year — leaves room for label)
           MAX=$(echo -e "$M2023\n$M2024\n$M2025\n$M2026" | sort -rn | head -1)
-          W2023=$((M2023 * 220 / MAX))
-          W2024=$((M2024 * 220 / MAX))
-          W2025=$((M2025 * 220 / MAX))
-          W2026=$((M2026 * 220 / MAX))
+          [ "$MAX" -eq 0 ] && MAX=1
+          W2023=$((M2023 * 180 / MAX))
+          W2024=$((M2024 * 180 / MAX))
+          W2025=$((M2025 * 180 / MAX))
+          W2026=$((M2026 * 180 / MAX))
 
           # Stats card
           cat > "$DIR/3-stats.svg" << SVGEOF
@@ -109,29 +110,37 @@ jobs:
           </svg>
           SVGEOF
 
-          # Monthly commits card
+          # Monthly commits card — wider to fit labels after bars
+          L2023=$((W2023 + 62))
+          L2024=$((W2024 + 62))
+          L2025=$((W2025 + 62))
+          L2026=$((W2026 + 62))
+
           cat > "$DIR/4-productive-time.svg" << SVGEOF
-          <svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
             <style>* { font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif }</style>
-            <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.4%" stroke="#1a1b27" stroke-width="1" fill="#1a1b27"/>
+            <rect x="1" y="1" rx="5" ry="5" height="99%" width="99.5%" stroke="#1a1b27" stroke-width="1" fill="#1a1b27"/>
             <text x="30" y="40" style="font-size: 20px; fill: #70a5fd;">Monthly Commits</text>
             <g transform="translate(30, 55)">
               <text x="0" y="22" style="font-size: 13px; fill: #a9b1d6;">2023</text>
-              <rect x="55" y="10" width="220" height="18" rx="3" fill="#2a2e3a"/>
+              <rect x="55" y="10" width="180" height="18" rx="3" fill="#2a2e3a"/>
               <rect x="55" y="10" width="${W2023}" height="18" rx="3" fill="#38bdae"/>
-              <text x="$((W2023 + 60))" y="24" style="font-size: 11px; fill: #a9b1d6;">~${M2023}/mo</text>
+              <text x="${L2023}" y="24" style="font-size: 12px; fill: #a9b1d6;">~${M2023}/mo</text>
+
               <text x="0" y="52" style="font-size: 13px; fill: #a9b1d6;">2024</text>
-              <rect x="55" y="40" width="220" height="18" rx="3" fill="#2a2e3a"/>
+              <rect x="55" y="40" width="180" height="18" rx="3" fill="#2a2e3a"/>
               <rect x="55" y="40" width="${W2024}" height="18" rx="3" fill="#70a5fd"/>
-              <text x="$((W2024 + 60))" y="54" style="font-size: 11px; fill: #a9b1d6;">~${M2024}/mo</text>
+              <text x="${L2024}" y="54" style="font-size: 12px; fill: #a9b1d6;">~${M2024}/mo</text>
+
               <text x="0" y="82" style="font-size: 13px; fill: #a9b1d6;">2025</text>
-              <rect x="55" y="70" width="220" height="18" rx="3" fill="#2a2e3a"/>
+              <rect x="55" y="70" width="180" height="18" rx="3" fill="#2a2e3a"/>
               <rect x="55" y="70" width="${W2025}" height="18" rx="3" fill="#bb9af7"/>
-              <text x="$((W2025 + 60))" y="84" style="font-size: 11px; fill: #a9b1d6;">~${M2025}/mo</text>
+              <text x="${L2025}" y="84" style="font-size: 12px; fill: #a9b1d6;">~${M2025}/mo</text>
+
               <text x="0" y="112" style="font-size: 13px; fill: #a9b1d6;">2026</text>
-              <rect x="55" y="100" width="220" height="18" rx="3" fill="#2a2e3a"/>
+              <rect x="55" y="100" width="180" height="18" rx="3" fill="#2a2e3a"/>
               <rect x="55" y="100" width="${W2026}" height="18" rx="3" fill="#f7768e"/>
-              <text x="$((W2026 + 60))" y="114" style="font-size: 11px; fill: #a9b1d6;">~${M2026}/mo</text>
+              <text x="${L2026}" y="114" style="font-size: 12px; fill: #a9b1d6;">~${M2026}/mo</text>
             </g>
           </svg>
           SVGEOF
