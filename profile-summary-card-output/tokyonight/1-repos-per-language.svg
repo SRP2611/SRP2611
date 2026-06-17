@@ -5,22 +5,22 @@
   <g transform="translate(30, 60)">
     <text x="0" y="15" style="font-size: 13px; fill: #a9b1d6;">Python</text>
     <rect x="85" y="3" width="200" height="14" rx="3" fill="#2a2e3a"/>
-    <rect x="85" y="3" width="190" height="14" rx="3" fill="#3776AB"/>
-    <text x="250" y="15" style="font-size: 12px; fill: #a9b1d6;">95%</text>
+    <rect x="85" y="3" width="184" height="14" rx="3" fill="#3776AB"/>
+    <text x="250" y="15" style="font-size: 12px; fill: #a9b1d6;">92%</text>
 
     <text x="0" y="42" style="font-size: 13px; fill: #a9b1d6;">TypeScript</text>
     <rect x="85" y="30" width="200" height="14" rx="3" fill="#2a2e3a"/>
-    <rect x="85" y="30" width="188" height="14" rx="3" fill="#3178C6"/>
-    <text x="250" y="42" style="font-size: 12px; fill: #a9b1d6;">94%</text>
+    <rect x="85" y="30" width="172" height="14" rx="3" fill="#3178C6"/>
+    <text x="250" y="42" style="font-size: 12px; fill: #a9b1d6;">86%</text>
 
     <text x="0" y="69" style="font-size: 13px; fill: #a9b1d6;">Jupyter</text>
     <rect x="85" y="57" width="200" height="14" rx="3" fill="#2a2e3a"/>
-    <rect x="85" y="57" width="170" height="14" rx="3" fill="#F37626"/>
-    <text x="250" y="69" style="font-size: 12px; fill: #a9b1d6;">85%</text>
+    <rect x="85" y="57" width="166" height="14" rx="3" fill="#F37626"/>
+    <text x="250" y="69" style="font-size: 12px; fill: #a9b1d6;">83%</text>
 
     <text x="0" y="96" style="font-size: 13px; fill: #a9b1d6;">Rust</text>
     <rect x="85" y="84" width="200" height="14" rx="3" fill="#2a2e3a"/>
-    <rect x="85" y="84" width="154" height="14" rx="3" fill="#DEA584"/>
-    <text x="250" y="96" style="font-size: 12px; fill: #a9b1d6;">77%</text>
+    <rect x="85" y="84" width="156" height="14" rx="3" fill="#DEA584"/>
+    <text x="250" y="96" style="font-size: 12px; fill: #a9b1d6;">78%</text>
   </g>
 </svg>

@@ -2,9 +2,9 @@
 
 ## Hey, I'm Shalabh 🤙
 
-**AI Platform Engineer & SRE**
+**AI Platform Engineer**
 
-*I build AI platforms and autonomous agents — and keep production systems rock-solid.*
+*I build AI platforms and autonomous agents that ship to production.*
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/shalabh-rocks/)
 [![EventInc](https://img.shields.io/badge/EventInc-181717?style=for-the-badge&logo=github&logoColor=white)](https://www.eventinc.de)
@@ -20,7 +20,8 @@
 + 🧠 Building autonomous AI agents that plan, code, test & deploy
 + 🔗 Wiring agents into real tools via MCP — GitHub, Sentry, Figma, Basecamp, Fly.io
 + ⚡ Designing multi-agent LLM pipelines with Claude, Codex & custom tool chains
-! 🔧 Keeping EventInc's production rock-solid — observability, alerting, MTTR ↓
++ 🏗️ Building AI platform layers — agent runtimes, eval harnesses & model orchestration
++ 🚀 Shipping production AI infrastructure — RAG pipelines, tool APIs & platform SDKs
 # 🏗️ Shipping Nexus — Elixir/Phoenix LiveView SaaS platform
 ```
 
@@ -129,8 +130,6 @@
 <div align="center">
 
 <img src="https://img.shields.io/badge/AI_Platform_Engineer-6C63FF?style=for-the-badge" />
-<img src="https://img.shields.io/badge/SRE-FFA726?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Full--Stack_Software_Engineer-2196F3?style=for-the-badge" />
 
 **11+ years in production** · Hamburg 🇩🇪
 <br/>
