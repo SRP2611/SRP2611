@@ -50,7 +50,7 @@
 
 <p align="center">
   <img src="./profile-summary-card-output/tokyonight/3-stats.svg" height="200" />
-  <img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg" height="200" />
+  <img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg?v=go-static" height="200" />
 </p>
 
 ---
