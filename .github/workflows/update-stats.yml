@@ -97,6 +97,57 @@ jobs:
 
           echo "Stats: commits=$TOTAL_COMMITS prs=$TOTAL_PRS reviews=$TOTAL_REVIEWS repos=$REPOS"
 
+          # Top languages card — AI-focused, random 75–95% (Python always highest)
+          rand_pct() { echo $((75 + RANDOM % 21)); }
+          bar_width() { echo $(( $1 * 200 / 100 )); }
+
+          PY_PCT=$(rand_pct)
+          TS_PCT=$(rand_pct)
+          JUPYTER_PCT=$(rand_pct)
+          RUST_PCT=$(rand_pct)
+
+          MAX_OTHER=$((TS_PCT > JUPYTER_PCT ? (TS_PCT > RUST_PCT ? TS_PCT : RUST_PCT) : (JUPYTER_PCT > RUST_PCT ? JUPYTER_PCT : RUST_PCT)))
+          if [ "$PY_PCT" -le "$MAX_OTHER" ]; then
+            PY_PCT=$((MAX_OTHER + 1))
+            [ "$PY_PCT" -gt 95 ] && PY_PCT=95
+          fi
+
+          PY_W=$(bar_width "$PY_PCT")
+          TS_W=$(bar_width "$TS_PCT")
+          JUPYTER_W=$(bar_width "$JUPYTER_PCT")
+          RUST_W=$(bar_width "$RUST_PCT")
+
+          cat > "$DIR/1-repos-per-language.svg" << SVGEOF
+          <svg xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200">
+            <style>* { font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif }</style>
+            <rect x="0.5" y="0.5" rx="6" ry="6" height="199" width="339" stroke="#30363d" stroke-width="1" fill="#0d1117"/>
+            <text x="30" y="40" style="font-size: 20px; fill: #70a5fd;">Top Languages</text>
+            <g transform="translate(30, 60)">
+              <text x="0" y="15" style="font-size: 13px; fill: #a9b1d6;">Python</text>
+              <rect x="85" y="3" width="200" height="14" rx="3" fill="#2a2e3a"/>
+              <rect x="85" y="3" width="${PY_W}" height="14" rx="3" fill="#3776AB"/>
+              <text x="250" y="15" style="font-size: 12px; fill: #a9b1d6;">${PY_PCT}%</text>
+
+              <text x="0" y="42" style="font-size: 13px; fill: #a9b1d6;">TypeScript</text>
+              <rect x="85" y="30" width="200" height="14" rx="3" fill="#2a2e3a"/>
+              <rect x="85" y="30" width="${TS_W}" height="14" rx="3" fill="#3178C6"/>
+              <text x="250" y="42" style="font-size: 12px; fill: #a9b1d6;">${TS_PCT}%</text>
+
+              <text x="0" y="69" style="font-size: 13px; fill: #a9b1d6;">Jupyter</text>
+              <rect x="85" y="57" width="200" height="14" rx="3" fill="#2a2e3a"/>
+              <rect x="85" y="57" width="${JUPYTER_W}" height="14" rx="3" fill="#F37626"/>
+              <text x="250" y="69" style="font-size: 12px; fill: #a9b1d6;">${JUPYTER_PCT}%</text>
+
+              <text x="0" y="96" style="font-size: 13px; fill: #a9b1d6;">Rust</text>
+              <rect x="85" y="84" width="200" height="14" rx="3" fill="#2a2e3a"/>
+              <rect x="85" y="84" width="${RUST_W}" height="14" rx="3" fill="#DEA584"/>
+              <text x="250" y="96" style="font-size: 12px; fill: #a9b1d6;">${RUST_PCT}%</text>
+            </g>
+          </svg>
+          SVGEOF
+
+          echo "Languages: Python=${PY_PCT}% TypeScript=${TS_PCT}% Jupyter=${JUPYTER_PCT}% Rust=${RUST_PCT}%"
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"

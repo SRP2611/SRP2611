@@ -2,9 +2,9 @@
 
 ## Hey, I'm Shalabh 🤙
 
-**AI & Software Reliability Engineer**
+**AI Platform Engineer & SRE**
 
-*I build autonomous AI agents that write code and keep production systems alive.*
+*I build AI platforms and autonomous agents — and keep production systems rock-solid.*
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/shalabh-rocks/)
 [![EventInc](https://img.shields.io/badge/EventInc-181717?style=for-the-badge&logo=github&logoColor=white)](https://www.eventinc.de)
@@ -58,7 +58,7 @@
 
 <table>
   <tr>
-    <td><b>🤖 AI & Agents</b></td>
+    <td><b>🤖 AI Platform & Agents</b></td>
     <td>
       <img src="https://img.shields.io/badge/Claude-6B4FBB?style=flat-square&logo=anthropic&logoColor=white" />
       <img src="https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white" />
@@ -67,6 +67,8 @@
       <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" />
       <img src="https://img.shields.io/badge/LLM_Research-FF6F61?style=flat-square" />
       <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+      <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white" />
+      <img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white" />
     </td>
   </tr>
   <tr>
@@ -126,8 +128,8 @@
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/AI_Engineer-6C63FF?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Software_Reliability_Engineer-FFA726?style=for-the-badge" />
+<img src="https://img.shields.io/badge/AI_Platform_Engineer-6C63FF?style=for-the-badge" />
+<img src="https://img.shields.io/badge/SRE-FFA726?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Full--Stack_Software_Engineer-2196F3?style=for-the-badge" />
 
 **11+ years in production** · Hamburg 🇩🇪
